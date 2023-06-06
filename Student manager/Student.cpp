@@ -1,7 +1,7 @@
 #include<iostream>
 #include<cstdlib>
-#include<fstream>//для роботи з файлами 
-#include<conio.h>//текстовий ввід-вивід 
+#include<fstream>//РґР»СЏ СЂРѕР±РѕС‚Рё Р· С„Р°Р№Р»Р°РјРё 
+#include<conio.h>//С‚РµРєСЃС‚РѕРІРёР№ РІРІС–Рґ-РІРёРІС–Рґ 
 
 using namespace std;
 
@@ -87,7 +87,7 @@ void Student::insert(){
 		cin >> email;
 		cout << "\n\n\n\t Enter contact: ";
 		cin >>contact;
-		file.open("StudentNotes.txt", ios::app | ios::out);//створює текстовий документ з даними 
+		file.open("StudentNotes.txt", ios::app | ios::out);//СЃС‚РІРѕСЂСЋС” С‚РµРєСЃС‚РѕРІРёР№ РґРѕРєСѓРјРµРЅС‚ Р· РґР°РЅРёРјРё  
 		file<< " " << number <<" " << name << " " << surname << " " << course << " " << mark << " " << address << " " << email << " " << contact << "\n";
 	    file.close();
 }
@@ -97,14 +97,14 @@ void Student::Display() {
 	fstream file;
 	int total = 0;
 	cout << "\n\n\t\t\t\t\t\t Table of student records";
-	file.open("StudentNotes.txt", ios::in);//Ввід даних у файл
+	file.open("StudentNotes.txt", ios::in);//Р’РІС–Рґ РґР°РЅРёС… Сѓ С„Р°Р№Р»
 	if (!file) {
-		cout << "\n\n\n\t There is no data in the list! ";//Якщо файл пустий 
+		cout << "\n\n\n\t There is no data in the list! ";//РЇРєС‰Рѕ С„Р°Р№Р» РїСѓСЃС‚РёР№ 
 		file.close();
 	}
 	else {
 		file >> number >> name >> surname >> course >> mark >> address >> email >> contact;
-		while (!file.eof()) { //повертає true, якщо файл пустий, а якщо не пустий, то false 
+		while (!file.eof()) { //РїРѕРІРµСЂС‚Р°С” true, СЏРєС‰Рѕ С„Р°Р№Р» РїСѓСЃС‚РёР№, Р° СЏРєС‰Рѕ РЅРµ РїСѓСЃС‚РёР№, С‚Рѕ false 
 			cout << "\n\n\n\t No: " << total++ <<endl;
 			cout << "\t Student number in the list: " << number <<endl;
 			cout << "\t Student name: " << name <<endl;
@@ -125,7 +125,7 @@ void Student::Display() {
 
 void Student::Change() {
 	system("cls");
-	fstream file, file1; //додатковий файл для змінених даних 
+	fstream file, file1;//РґРѕРґР°С‚РєРѕРІРёР№ С„Р°Р№Р» РґР»СЏ Р·РјС–РЅРµРЅРёС… РґР°РЅРёС… 
 	string number1;
 	int found = 0;
 	cout << "\n\n\t\t\t\t\t\t Change student details";
@@ -169,8 +169,8 @@ void Student::Change() {
 		}
 		file1.close();
 		file.close();
-		remove("StudentNotes.txt"); //Видаляє старий StudentNotes 
-		rename("NewNotes.txt", "StudentNotes.txt"); //створює новий StudentNotes зі змінами
+		remove("StudentNotes.txt"); //Р’РёРґР°Р»СЏС” СЃС‚Р°СЂРёР№ StudentNotes 
+		rename("NewNotes.txt", "StudentNotes.txt");  //СЃС‚РІРѕСЂСЋС” РЅРѕРІРёР№ StudentNotes Р·С– Р·РјС–РЅР°РјРё
 	}
 }
 
@@ -190,7 +190,7 @@ void Student::Search() {
 		cin>>number1;
 		file >> number >> name >> surname >> course >> mark >> address >> email >> contact;
 		while (!file.eof()) {
-			if (number1 == number) { //якщо співпадає, виводить дані студента 
+			if (number1 == number) { //СЏРєС‰Рѕ СЃРїС–РІРїР°РґР°С”, РІРёРІРѕРґРёС‚СЊ РґР°РЅС– СЃС‚СѓРґРµРЅС‚Р° 
 				cout << "\t Student number in the list: " << number << endl;
 				cout << "\t Student name: " << name << endl;
 				cout << "\t Student surname: " << surname << endl;
@@ -240,8 +240,8 @@ void Student::Delete() {
 		}
 		file1.close();
 		file.close(); 
-		remove("StudentNotes.txt");                 // Видаляє старий файл
-		rename("NewNotes.txt","StudentNotes.txt" ); // Створює новий і перейменовує  
+		remove("StudentNotes.txt");                  // Р’РёРґР°Р»СЏС” СЃС‚Р°СЂРёР№ С„Р°Р№Р»
+		rename("NewNotes.txt","StudentNotes.txt" ); // РЎС‚РІРѕСЂСЋС” РЅРѕРІРёР№ С– РїРµСЂРµР№РјРµРЅРѕРІСѓС”  
 	}
 }
 
